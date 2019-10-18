@@ -17,6 +17,7 @@ import (
 	"time"
 
 	"github.com/influxdata/influxql"
+	"github.com/influxdata/kapacitor/influxdb"
 	khttp "github.com/influxdata/kapacitor/http"
 	"github.com/pkg/errors"
 )
@@ -1007,7 +1008,7 @@ func (c *Client) ListTasks(opt *ListTasksOptions) ([]Task, error) {
 	return r.Tasks, nil
 }
 
-func (c *Client) TaskOutput(link Link, name string) (*influxql.Result, error) {
+func (c *Client) TaskOutput(link Link, name string) (*influxdb.Result, error) {
 	u := *c.url
 	u.Path = path.Join(link.Href, name)
 
@@ -1015,7 +1016,7 @@ func (c *Client) TaskOutput(link Link, name string) (*influxql.Result, error) {
 	if err != nil {
 		return nil, err
 	}
-	r := &influxql.Result{}
+	r := &influxdb.Result{}
 	_, err = c.Do(req, r, http.StatusOK)
 	if err != nil {
 		return nil, err
