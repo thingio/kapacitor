@@ -16,7 +16,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/influxdata/influxdb/influxql"
+	"github.com/influxdata/influxql"
 	khttp "github.com/influxdata/kapacitor/http"
 	"github.com/pkg/errors"
 )
